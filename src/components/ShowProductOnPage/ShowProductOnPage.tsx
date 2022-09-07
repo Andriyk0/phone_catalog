@@ -9,6 +9,7 @@ import { getCheckout, getFavorite } from '../../store/selectors';
 import './ShowProductOnPage.scss';
 import { goToTop } from '../Footer';
 import { includeProd } from '../Slider';
+import { Loader } from '../Loader';
 
 type Props = {
   product: Product[]
@@ -196,7 +197,10 @@ export const ShowProductOnPage:React.FC<Props> = ({ product }) => {
       </div>
       {
         product.length === 0 && (
-          <p className="noProduct">No Product</p>
+          <>
+            <p className="noProduct">No Product</p>
+            <Loader />
+          </>
         )
       }
       <div className="button">
