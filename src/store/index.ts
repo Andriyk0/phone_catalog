@@ -55,12 +55,6 @@ const reducer = createReducer(initialState, (builder) => {
     state.checkout = [...state.checkout, action.payload];
   });
 
-  builder.addCase(delCheckout, (state, action) => {
-    // eslint-disable-next-line no-param-reassign
-    state.checkout = state.checkout
-      .filter((item:Product) => item.id !== action.payload.id);
-  });
-
   builder.addCase(setDetailProduct, (state, action) => {
     // eslint-disable-next-line no-param-reassign
     state.detailProduct = action.payload;
