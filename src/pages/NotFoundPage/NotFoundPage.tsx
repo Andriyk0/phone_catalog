@@ -3,6 +3,6 @@ import './NotFoundPage.scss';
 
 export const NotFoundPage:React.FC = () => {
   return (
-    <div>NotFoundPage</div>
+    <h1 className="notFound_title">Not Found Page</h1>
   );
 };
