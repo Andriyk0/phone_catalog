@@ -3,15 +3,15 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import classname from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPath } from '../../store/selectors';
+import { getCheckout, getFavorite, getPath } from '../../store/selectors';
 import { setPath } from '../../store';
 
 export const Header:React.FC = () => {
   const dispatch = useDispatch();
   const pathArray = ['home', 'phones', 'tablets', 'acsessories'];
   const path = useSelector(getPath);
-  const checkout = [];
-  const favorite = [];
+  const checkout = useSelector(getCheckout);
+  const favorite = useSelector(getFavorite);
 
   useEffect(() => {
     const linkhreff = window.location.href;
