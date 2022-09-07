@@ -1,1 +1,41 @@
-//not empty
+.ascessories {
+  padding: 24px 152px;
+
+  &__path_container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__home_img {
+    margin-right: 14px;
+    cursor: pointer;
+  }
+
+  &__right_img {
+    margin-right: 13px;
+  }
+
+  &__path {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__numberOfascessories {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+}
