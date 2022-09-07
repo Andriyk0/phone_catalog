@@ -1,6 +1,10 @@
 // / <reference types="react-scripts" />
 interface State {
   path: string,
+  allProductInfo: Product[],
+  favorite: Product[],
+  checkout: Product[],
+  detailProduct: Product,
 }
 
 interface Product extends Info{
