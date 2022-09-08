@@ -80,7 +80,7 @@ export const Slider:React.FC<Props> = ({ product }) => {
                     goToProductDetails(item);
                     goToTop();
                   }}
-                  to="product_details"
+                  to="/product_details"
                 >
                   <img
                     className="mySlider__image"

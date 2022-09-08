@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { goToTop } from '../../components/Footer';
-import { setDetailProduct, setPath } from '../../store';
+import { delCheckout, setDetailProduct, setPath } from '../../store';
 import { getCheckout } from '../../store/selectors';
 import './CheckoutPage.scss';
 
@@ -46,13 +46,9 @@ export const CheckoutPage:React.FC = () => {
     showCheckout.splice(index, 1, newObj);
   };
 
-  const deleteProductFromCheckout = (prod:Product) => {
-    showCheckout.filter((item:Product) => item.id !== prod.id);
-  };
-
   useEffect(() => {
     total();
-    setShowCheckout([...showCheckout, ...checkout]);
+    setShowCheckout([...checkout]);
   }, [checkout.length]);
 
   const goToProductDetails = (product:Product) => {
@@ -81,7 +77,9 @@ export const CheckoutPage:React.FC = () => {
                 <div className="cart__about_prod">
                   <button
                     type="button"
-                    onClick={() => deleteProductFromCheckout(item)}
+                    onClick={() => {
+                      dispatch(delCheckout(item));
+                    }}
                     className="cart__button_close"
                   >
                     <img
@@ -96,7 +94,7 @@ export const CheckoutPage:React.FC = () => {
                       goToProductDetails(item);
                       goToTop();
                     }}
-                    to="product_details"
+                    to="/product_details"
                   >
                     <img
                       className="cart__prod_img"

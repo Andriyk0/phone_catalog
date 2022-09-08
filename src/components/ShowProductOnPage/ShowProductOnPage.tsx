@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import uuid from 'react-uuid';
 import {
   delCheckout, delFavorite, setCheckout, setDetailProduct, setFavorite, setPath,
 } from '../../store';
@@ -124,7 +125,7 @@ export const ShowProductOnPage:React.FC<Props> = ({ product }) => {
             }}
           >
             { ProductLength.map(item => (
-              <option key={item} value={item}>{item}</option>
+              <option key={uuid()} value={item}>{item}</option>
             ))}
           </select>
         </div>
@@ -140,7 +141,7 @@ export const ShowProductOnPage:React.FC<Props> = ({ product }) => {
                     goToProductDetails(item);
                     goToTop();
                   }}
-                  to="product_details"
+                  to="/product_details"
                 >
                   <img
                     className="mySlider__image"
