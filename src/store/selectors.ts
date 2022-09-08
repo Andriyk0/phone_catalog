@@ -27,3 +27,5 @@ export const getCheckout = (state:State) => state.checkout;
 export const getPath = (state:State) => state.path;
 
 export const getDetailProduct = (state:State) => state.detailProduct;
+
+export const getQuery = (state:State) => state.query;

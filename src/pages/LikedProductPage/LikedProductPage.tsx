@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import {
   delCheckout, delFavorite, setCheckout, setDetailProduct, setFavorite, setPath,
 } from '../../store';
-import { getCheckout, getFavorite } from '../../store/selectors';
+import { getCheckout, getFavorite, getQuery } from '../../store/selectors';
 import './LikedProductPage.scss';
 import { goToTop } from '../../components/Footer';
 import { includeProd } from '../../components/Slider';
@@ -14,6 +14,13 @@ export const LikedProductPage:React.FC = () => {
   const dispatch = useDispatch();
   const favorite = useSelector(getFavorite);
   const checkout = useSelector(getCheckout);
+  const query = useSelector(getQuery);
+  const [showFavourite, setShowFavorite] = useState<Product[]>([...favorite]);
+
+  useEffect(() => {
+    setShowFavorite([...favorite]
+      .filter(item => item.name.toLowerCase().includes(query.toLowerCase())));
+  }, [favorite, query]);
 
   const goToProductDetails = (product:Product) => {
     dispatch(setDetailProduct(product));
@@ -37,7 +44,7 @@ export const LikedProductPage:React.FC = () => {
       <p className="phones__numberOfPhones">{`${favorite.length} items`}</p>
       <div className="cards">
         {
-          favorite.map(item => (
+          showFavourite.map(item => (
             <div className="mySlider__product_box" key={item.id}>
               <div className="mySlider__image_box">
                 <Link

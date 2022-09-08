@@ -9,6 +9,7 @@ enum ActionType {
   SET_CHECKOUT = 'SET_CHECKOUT',
   DEL_CHECKOUT = 'DEL_CHECKOUT',
   DETAIL_PRODUCT = 'DETAIL_PRODUCT',
+  SET_QUERY = 'SET_QUERY',
 }
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   favorite: [],
   checkout: [],
   detailProduct: {},
+  query: '',
 };
 
 export const setAllProductInfo = createAction<Product[]>(ActionType.SET_DATA);
@@ -27,6 +29,7 @@ export const setCheckout = createAction<Product>(ActionType.SET_CHECKOUT);
 export const delCheckout = createAction<Product>(ActionType.DEL_CHECKOUT);
 export const setDetailProduct
   = createAction<Product>(ActionType.DETAIL_PRODUCT);
+export const setQuery = createAction<string>(ActionType.SET_QUERY);
 
 const reducer = createReducer(initialState, (builder) => {
   builder.addCase(setAllProductInfo, (state, action:any) => {
@@ -64,6 +67,11 @@ const reducer = createReducer(initialState, (builder) => {
   builder.addCase(setDetailProduct, (state, action) => {
     // eslint-disable-next-line no-param-reassign
     state.detailProduct = action.payload;
+  });
+
+  builder.addCase(setQuery, (state, action) => {
+    // eslint-disable-next-line no-param-reassign
+    state.query = action.payload;
   });
 });
 

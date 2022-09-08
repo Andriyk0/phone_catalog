@@ -5,6 +5,7 @@ import classname from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCheckout, getFavorite, getPath } from '../../store/selectors';
 import { setPath } from '../../store';
+import { Search } from '../Search';
 
 export const Header:React.FC = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,14 @@ export const Header:React.FC = () => {
         ))}
       </nav>
       <nav className="navbar__right-box">
+        {
+          (path === 'phones'
+          || path === 'tablets'
+          || path === 'acsessories'
+          || path === 'liked_product') && (
+            <Search />
+          )
+        }
         <Link
           to="liked_product"
           className={classname('navbar__liked',

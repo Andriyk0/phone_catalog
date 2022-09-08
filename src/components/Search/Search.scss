@@ -1,0 +1,26 @@
+.search {
+  width: 327px;
+  height: 65px;
+  border: 1px solid #b4bdc4;
+  border-bottom: none;
+  border-right: none;
+  padding: 23px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #b4bdc4;
+  outline: 1px solid;
+
+  &__box {
+    width: 327px;
+    height: 65px;
+    position: relative;
+    display: flex;
+  }
+
+  &__image {
+    position: absolute;
+    right: 23px;
+    top: 23px;
+  }
+}

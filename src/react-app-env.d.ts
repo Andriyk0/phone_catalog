@@ -5,6 +5,7 @@ interface State {
   favorite: Product[],
   checkout: Product[],
   detailProduct: Product,
+  query:string
 }
 
 interface Product extends Info{

@@ -6,7 +6,7 @@ import uuid from 'react-uuid';
 import {
   delCheckout, delFavorite, setCheckout, setDetailProduct, setFavorite, setPath,
 } from '../../store';
-import { getCheckout, getFavorite } from '../../store/selectors';
+import { getCheckout, getFavorite, getQuery } from '../../store/selectors';
 import './ShowProductOnPage.scss';
 import { goToTop } from '../Footer';
 import { includeProd } from '../Slider';
@@ -20,6 +20,7 @@ export const ShowProductOnPage:React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
   const favorite = useSelector(getFavorite);
   const checkout = useSelector(getCheckout);
+  const query = useSelector(getQuery);
   const [
     ProductLength, setProductLength,
   ] = useState<(string | number)[]>(['All']);
@@ -38,7 +39,7 @@ export const ShowProductOnPage:React.FC<Props> = ({ product }) => {
       arr.push(i);
     }
 
-    return setProductLength([...ProductLength, ...arr]);
+    return setProductLength(['All', ...arr]);
   };
 
   const sortProduct = (event:string) => {
@@ -81,8 +82,9 @@ export const ShowProductOnPage:React.FC<Props> = ({ product }) => {
 
   useEffect(() => {
     createNumberArr();
-    setShowProduct([...product]);
-  }, [product]);
+    setShowProduct([...product]
+      .filter(item => item.name.toLowerCase().includes(query.toLowerCase())));
+  }, [product, query]);
 
   const goToProductDetails = (prod:Product) => {
     dispatch(setDetailProduct(prod));
