@@ -1,4 +1,4 @@
-[DEMO LINK](https://Andriyk0.github.io/mobilesShop/)
+[DEMO LINK](https://Andriyk0.github.io/phone_catalog/)
 
 Dependencies Node v14.18.2 and higher NPM v6.14.5 and higher
 
